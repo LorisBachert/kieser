@@ -5,17 +5,17 @@
   <mat-drawer #drawer mode="over" position="end">
     <h1 class="title">Kieser Training</h1>
     <mat-list class="nav" (click)="drawer.close()">
-      <a routerLink="training" mat-list-item>
+      <a routerLink="" mat-list-item>
         <mat-icon mat-list-icon>fitness_center</mat-icon>
-        Training
-      </a>
-      <a routerLink="history" mat-list-item>
-        <mat-icon mat-list-icon>checklist</mat-icon>
-        History
+        Workout
       </a>
       <a routerLink="settings" mat-list-item>
         <mat-icon mat-list-icon>settings</mat-icon>
         Workout plan
+      </a>
+      <a routerLink="history" mat-list-item>
+        <mat-icon mat-list-icon>checklist</mat-icon>
+        History
       </a>
     </mat-list>
   </mat-drawer>

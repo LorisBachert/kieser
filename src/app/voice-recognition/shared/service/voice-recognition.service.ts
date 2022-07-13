@@ -1,6 +1,7 @@
 import {Injectable, NgZone} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {createVoiceRecognition} from '../../util/voice-recognition-factory.util';
+import {VoiceRecognitionListener} from '../model/voice-recognition-listener.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,8 @@ export class VoiceRecognitionService {
   public listening$ = new BehaviorSubject<boolean>(false);
 
   private language = 'en-US';
+
+  private listeners: Set<VoiceRecognitionListener> = new Set();
 
   constructor(private ngZone: NgZone) {
     this.listener = createVoiceRecognition(this.language);
@@ -48,10 +51,16 @@ export class VoiceRecognitionService {
     this.listener.stop();
   }
 
+  public addListener(listener: VoiceRecognitionListener) {
+    this.listeners.add(listener);
+  }
+
   private onResult(result: SpeechRecognitionResult) {
     for (let i = 0; i < result.length; i++) {
       const alternative = result[i];
-      console.log(alternative);
+      this.ngZone.run(() => {
+        this.listeners.forEach(listener => listener.onVoiceRecognition(alternative));
+      })
     }
   }
 

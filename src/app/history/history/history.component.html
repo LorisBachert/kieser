@@ -1,0 +1,11 @@
+<div class="page">
+  <h1 class="title">History</h1>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let workout of historyService.history">
+      <mat-expansion-panel-header>{{workout.date | date}}</mat-expansion-panel-header>
+      <div class="history-workout">
+        <app-machine-result *ngFor="let result of workout.results.reverse()" [result]="result"></app-machine-result>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

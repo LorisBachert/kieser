@@ -1,0 +1,24 @@
+.workout-result {
+  display: grid;
+  grid-template-areas:  "name seconds"
+                        "weight seconds";
+  grid-template-columns: 1fr min-content;
+  grid-template-rows: 2fr 1fr;
+
+  .name {
+    grid-area: name;
+    margin: 0;
+  }
+
+  .weight {
+    grid-area: weight;
+  }
+
+  .seconds {
+    grid-area: seconds;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,18 @@
+<div class="page">
+  <h1 class="title">Workout</h1>
+  <div class="content">
+    <ng-container *ngIf="(workoutService.workoutState$ | async) !== workoutStates.WAITING; else startWorkout">
+      <mat-card *ngIf="(workoutService.workoutState$ | async) === workoutStates.FINISHED">
+        Workout completed! Well done!
+      </mat-card>
+      <app-machine-result *ngIf="workoutService.currentResult as currentMachine" [result]="currentMachine"></app-machine-result>
+      <h2 class="completed-machines">Completed Machines</h2>
+      <app-machine-result *ngFor="let result of workoutService.workoutResult.results" [result]="result"></app-machine-result>
+    </ng-container>
+    <ng-template #startWorkout>
+      <div class="center-content">
+        <button mat-raised-button color="primary" (click)="workoutService.start()">Start Workout</button>
+      </div>
+    </ng-template>
+  </div>
+</div>
