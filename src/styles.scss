@@ -2,3 +2,44 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a {
+  text-decoration: none;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
+  .title {
+    margin: 0;
+  }
+
+  .footer {
+    padding-bottom: 1rem;
+  }
+
+  .content {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  height: 100%;
+  width: 100%;
+  padding: 1rem 1rem 0;
+  box-sizing: border-box;
+}
+
+.key-value-list {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: .5rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  padding-top: 1rem;
+}

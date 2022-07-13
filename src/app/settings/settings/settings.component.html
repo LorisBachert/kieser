@@ -1,0 +1,13 @@
+<form #form="ngForm" class="page">
+  <h1 class="title">Workout Plan</h1>
+  <div class="content">
+    <mat-card class="add-setting" (click)="addMachineSetting()">
+      Add machine
+    </mat-card>
+    <app-machine-settings *ngFor="let machineSetting of workoutDefinition.machineSettings; let index = index" [machineSettings]="machineSetting" [index]="index">
+    </app-machine-settings>
+  </div>
+  <div class="footer actions" *ngIf="form.dirty">
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+</form>
